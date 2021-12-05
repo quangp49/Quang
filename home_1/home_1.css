@@ -4,10 +4,11 @@
 }
 .container
 {
+    background-color: #4829b2;
     width: 100%;
     height: 100%;
     margin: auto;
-    background-color: #4829b2;
+    color: white;
 }
 .header{
     margin: 0 auto;
