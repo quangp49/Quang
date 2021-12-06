@@ -20,34 +20,31 @@
     width: 100vw;
     height: 100vh;
     color: white;
-    background-image: radial-gradient(ellipse 100% 200% at 60% 200%, #5134b6 90%, #0000 90%);
+    background-image: radial-gradient(ellipse 100% 200% at 100% 200%, #5134b6 90%, #0000 90%);
 }
 .header{
     border-bottom: 1px solid rgb(53, 53, 53);
 }
 .list{
-    padding:10px 80px 0px 80px;
     list-style: none;
     display: flex;
     justify-content: space-between;
     font-size:1.2rem;
 }
+.sublist{
+    list-style: none;
+    display:flex;
+}
 .list_item{
-    padding: 13px;
+    margin: auto;
+    text-align: center;
+    padding-right: 20px;
+    display: flex;
     font-family: normal;
     font-size: smaller;
 }
 .logo{
-    padding-top: 4px;
-    align-items: center;
-}
-.sublist{
-    list-style: none;
-    display:flex;
-    padding-bottom: 10px;
-}
-.list_item+.list_item{
-    padding-left: 20px;
+    padding: 10%;
 }
 .list_item:hover{
     cursor: pointer;
@@ -72,7 +69,7 @@
     margin-top:30px
 }
 .title{
-    padding-top: 10%;
+    padding-top: 7%;
     font-size:77px;
     font-family: title_light;
     font-weight: 500;
@@ -87,10 +84,11 @@
     font-size:20px;
     font-family: title_light;
 }
-.button+.button{
+/*.button+.button{
     margin-left:20px
-}
+}*/
 .button{
+    margin-left: 20px;
     width:150px;
     padding:15px 20px;
     font-size:15px;
