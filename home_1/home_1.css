@@ -39,7 +39,7 @@
 }
 .logo{
     padding-top: 4px;
-    margin-right: 20px;
+    align-items: center;
 }
 .sublist{
     list-style: none;
