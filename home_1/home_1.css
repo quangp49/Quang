@@ -46,7 +46,6 @@
     display:flex;
     padding-bottom: 10px;
 }
-}
 .list_item:hover{
     cursor: pointer;
     opacity: 0.7;
