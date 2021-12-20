@@ -40,10 +40,11 @@ const data = [
   { secCd: "SBA", alloDate: "14-11-2021", price: 10 },
   { secCd: "NLG", alloDate: "14-11-2021", price: 10 },
   { secCd: "NLG", alloDate: "14-11-2021", price: 10 },
-  { secCd: "ANV", alloDate: "009-11-2021", price: 10 },
-  { secCd: "CLC", alloDate: "009-11-2021", price: 10 },
+  { secCd: "ANV", alloDate: "09-11-2021", price: 10 },
+  { secCd: "CLC", alloDate: "09-11-2021", price: 10 },
 ];
-const table = document.querySelector(".myTable");
+const table = document.querySelector(".myTable")
+const header = document.querySelector(".table_header_secCd")
 data.forEach((el) => {
   const tr = document.createElement("tr");
   const td1 = document.createElement("td");
@@ -58,65 +59,57 @@ data.forEach((el) => {
   table.appendChild(tr);
 });
 
-function sortTable(n) {
-  var table,
-    rows,
-    switching,
-    i,
-    x,
-    y,
-    shouldSwitch,
-    dir,
-    switchcount = 0;
-  table = document.getElementById("myTable");
-  switching = true;
-  //Set the sorting direction to ascending:
-  dir = "asc";
-  /*Make a loop that will continue until
+header.addEventListener("click", ()=> sortTable(0, table))
+function sortTable(n, table) {
+var rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+switching = true;
+//Set the sorting direction to ascending:
+dir = "asc"; 
+/*Make a loop that will continue until
 no switching has been done:*/
-  while (switching) {
+while (switching) {
     //start by saying: no switching is done:
     switching = false;
     rows = table.rows;
     /*Loop through all table rows (except the
     first, which contains table headers):*/
-    for (i = 1; i < rows.length - 1; i++) {
-      //start by saying there should be no switching:
-      shouldSwitch = false;
-      /*Get the two elements you want to compare,
+    for (i = 1; i < (rows.length - 1); i++) {
+    //start by saying there should be no switching:
+    shouldSwitch = false;
+    /*Get the two elements you want to compare,
     one from current row and one from the next:*/
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      /*check if the two rows should switch place,
+    x = rows[i].getElementsByTagName("TD")[n];
+    y = rows[i + 1].getElementsByTagName("TD")[n];
+    /*check if the two rows should switch place,
     based on the direction, asc or desc:*/
-      if (dir == "asc") {
+    if (dir == "asc") {
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
+        //if so, mark as a switch and break the loop:
+        shouldSwitch= true;
+        break;
         }
-      } else if (dir == "desc") {
+    } else if (dir == "desc") {
         if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
         }
-      }
+    }
     }
     if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
+    /*If a switch has been marked, make the switch
     and mark that a switch has been done:*/
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      //Each time a switch is done, increase this count by 1:
-      switchcount++;
+    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+    switching = true;
+    //Each time a switch is done, increase this count by 1:
+    switchcount ++;      
     } else {
-      /*If no switching has been done AND the direction is "asc",
+    /*If no switching has been done AND the direction is "asc",
     set the direction to "desc" and run the while loop again.*/
-      if (switchcount == 0 && dir == "asc") {
+    if (switchcount == 0 && dir == "asc") {
         dir = "desc";
         switching = true;
-      }
     }
-  }
+    }
 }
+} 

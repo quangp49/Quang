@@ -9,22 +9,25 @@
         table, th, td {
         border-spacing: 0;
         width: 100vw;
-        border: 1px solid #000000;
+        border: 0.5px solid #7e7e7e;
         }
         th:hover {
             cursor: pointer;
             opacity: 0.7;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(231, 231, 231)
         }
     </style>
 </head>
 <body>
     <table class="myTable">
         <tr>
-            <th style="width: 30%;" onclick="sortTable(0)">Mã cổ phiếu</th>
-            <th style="width: 40%;" onclick="sortTable(1)">Ngày chốt danh sách</th>
-            <th style="width: 30%;" onclick="sortTable(2)">Giá</th>
+            <th style="width: 30%;" class="table_header_secCd">Mã cổ phiếu</th>
+            <th style="width: 40%;">Ngày chốt danh sách</th>
+            <th style="width: 30%;">Giá</th>
         </tr>
     </table>
-    <script type="module" src="./convert.js"></script>
+    <script type="module" src="./convert.js"></script>  
 </body>
 </html>
