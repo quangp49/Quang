@@ -1,4 +1,5 @@
 const data = [
+  //This data is imported from data.json
   { secCd: "TIG", alloDate: "24-11-2021", price: 10 },
   { secCd: "AAA", alloDate: "23-11-2021", price: 10 },
   { secCd: "NAB", alloDate: "22-11-2021", price: 10 },
@@ -44,7 +45,9 @@ const data = [
   { secCd: "CLC", alloDate: "09-11-2021", price: 10 },
 ];
 const table = document.querySelector(".myTable")
-const header = document.querySelector(".table_header_secCd")
+const header_secCd = document.querySelector(".table_header_secCd")
+const header_alloDate = document.querySelector(".table_header_alloDate")
+const t_body = document.querySelector("tbody")
 data.forEach((el) => {
   const tr = document.createElement("tr");
   const td1 = document.createElement("td");
@@ -56,10 +59,23 @@ data.forEach((el) => {
   tr.appendChild(td1);
   tr.appendChild(td2);
   tr.appendChild(td3);
-  table.appendChild(tr);
+  t_body.appendChild(tr);
 });
+let count = 0
 
-header.addEventListener("click", ()=> sortTable(0, table))
+//Sort by name (secCd)
+header_secCd.addEventListener("click", ()=> sortTable(0, table))
+header_alloDate.addEventListener("click", ()=> {
+  count=count+1;
+  if(count%2!=0){
+    sortByDate(t_body)
+  }else{
+    returnSort(t_body)
+  }
+})
+
+
+
 function sortTable(n, table) {
 var rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 switching = true;
@@ -113,3 +129,34 @@ while (switching) {
     }
 }
 } 
+
+//Sort by day (alloDate)
+function convertDate(d) {
+  var p = d.split("-");
+  return +(p[2]+p[1]+p[0]);
+}
+
+function sortByDate(t_body) {
+  // get trs as array for ease of use
+  var rows = [].slice.call(t_body.querySelectorAll("tr"));
+  console.log(rows);
+  rows.sort(function(a,b) {
+    return convertDate(a.cells[1].innerHTML) - convertDate(b.cells[1].innerHTML);
+  });
+
+  rows.forEach(function(v) {
+    t_body.appendChild(v); // note that .appendChild() moves elements
+  });
+}
+
+function returnSort(t_body) {
+  // get trs as array for ease of use
+  var rows = [].slice.call(t_body.querySelectorAll("tr"));
+  rows.sort(function(a,b) {
+    return convertDate(b.cells[1].innerHTML) - convertDate(a.cells[1].innerHTML);
+  });
+
+  rows.forEach(function(v) {
+    t_body.appendChild(v); // note that .appendChild() moves elements
+  });
+}

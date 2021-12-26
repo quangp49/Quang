@@ -1,3 +1,4 @@
+//This file is used to read data from sample.json and write them to data.json
 const fs=require("fs");
 const res=fs.readFileSync('sample.json');
 const data=JSON.parse(res);
